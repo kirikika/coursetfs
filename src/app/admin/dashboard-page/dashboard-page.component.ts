@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
-import { PostsService } from 'src/app/shared/posts.service';
-import { Post } from 'src/app/shared/interfaces';
+import { PostsService } from '../../shared/posts.service';
+import { Post } from '../../shared/interfaces';
 import { Subscription } from 'rxjs';
 import { AlertService } from '../shared/services/alert.service';
 
