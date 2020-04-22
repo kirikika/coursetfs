@@ -1,0 +1,46 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Создание новой заметки</h1>
+    <p>Добавьте новую заметку или поделитесь идеей</p>
+
+    <div
+            class="form-control"
+            [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+    >
+        <label for="title">Название:</label>
+        <input id="title" type="text" formControlName="title">
+        <div
+                *ngIf="form.get('title').touched && form.get('title').invalid"
+                class="validation"
+        >
+            <small *ngIf="form.get('title').errors.required">
+                Введите название
+            </small>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label>Содержимое:</label>
+        <input id="text" type="text" formControlName="text">
+    </div>
+
+    <div
+            class="form-control"
+            [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}"
+    >
+        <label for="author">Автор:</label>
+        <input id="author" type="text" formControlName="author">
+        <div
+                *ngIf="form.get('author').touched && form.get('author').invalid"
+                class="validation"
+        >
+            <small *ngIf="form.get('author').errors.required">
+                Кто автор?          </small>
+        </div>
+    </div>
+
+    <button
+            type="submit"
+            class="btn btn-block btn-dark"
+            [disabled]="form.invalid"
+    >Добавить</button>
+</form>

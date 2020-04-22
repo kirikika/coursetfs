@@ -1,0 +1,49 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+   <div class="taskdiv"> </div>
+    <h1>Список задач</h1>
+
+    <div
+            class="form-control"
+            [ngClass]="{invalid: form.get('titletask').touched && form.get('titletask').invalid}"
+    >
+        <label for="titletask">Задача:</label>
+        <input id="titletask" type="text" formControlName="titletask" placeholder="Напишите задачу...">
+        <div
+                *ngIf="form.get('titletask').touched && form.get('titletask').invalid"
+                class="validation"
+        >
+            <small *ngIf="form.get('titletask').errors.required">
+                добавьте задачу
+            </small>
+        </div>
+    </div>
+
+    <button
+            type="submit"
+            class="btn btn-block btn-dark"
+            [disabled]="form.invalid"
+    >Добавить</button>
+    <div class="table">
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Задача</th>
+            <th>Дата и время</th>
+            <th>Управление</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of tasks; let idx = index">
+            <td>{{idx + 1}}</td>
+            <td>{{task.titletask}}</td>
+            <td>{{task.date}}</td>
+            <td>
+                <a (click)="remove(task.id)">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</form>
+
