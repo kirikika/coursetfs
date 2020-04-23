@@ -19,11 +19,6 @@
         <td>{{post.title}}</td>
         <td>{{post.date}}</td>
         <td>
-            <button class="btn btn-link open"
-                    [routerlink]="['/admin', 'post', post.id, 'edit']"
-            >
-                Изменить
-            </button>
             <a (click)="remove(post.id)">Удалить</a>
         </td>
     </tr>
