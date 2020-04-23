@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../shared/services/alert.service';
-import { TaskService } from 'src/app/shared/task.service';
-import { Task } from 'src/app/shared/interfaces'
+import { TaskService } from '../../../app/shared/task.service';
+import { Task } from '../../../app/shared/interfaces'
 import { Subscription } from 'rxjs';
 
 @Component({

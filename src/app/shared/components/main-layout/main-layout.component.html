@@ -1,7 +1,81 @@
-<nav class="navbar main">
-  <h1>What to do? What to do...</h1>
+<nav class="navbar bg-primary">
+  <h1>
+    <a routerLink="/">What to do? What to do...</a>
+  </h1>
+  <button class="btn" id="mainButton" (click)="goToLogin()">Нажмите на эту кнопку</button>
 </nav>
 
-<div class="container">
-  <h1>Вы на главной странице!</h1>
-</div>
+<form>
+  <div class="container">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+
+      <h2>Регистрация</h2>
+
+      <div class="form-control" [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}">
+        <label>Придумайте e-mail</label>
+        <input type="text" placeholder="e-mail" formControlName="email">
+
+        <div
+                *ngIf="form.get('email').invalid && form.get('email').touched"
+                class="validation"
+        >
+          <small *ngIf="form.get('email').errors.required">
+            Поле e-mail не должно быть пустым
+          </small>
+
+          <small *ngIf="form.get('email').errors.email">
+            Введите правильный e-mail, например, test@mail.ru
+          </small>
+
+          <small *ngIf="form.get('email').errors.restrictedEmail">
+            Введенный Вами e-mail {{form.get('email').value}} не допустим
+          </small>
+
+          <small *ngIf="form.get('email').errors.uniqEmail">
+            Данный e-mail {{form.get('email').value}} уже зарегистрирован
+          </small>
+
+          <small *ngIf="form.get('email').errors.maxlength">
+            Длина должна быть не более {{form.get('email').errors.maxlength.requiredLength}} символов.
+          </small>
+        </div>
+      </div>
+      <div class="form-control" [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}">
+        <label>Придумайте пароль</label>
+        <input type="password" placeholder="пароль" formControlName="password">
+        <div
+                *ngIf="form.get('password').invalid && form.get('password').touched"
+                class="validation"
+        >
+          <small *ngIf="form.get('password').errors.required">
+            Поле пароля не должно быть пустым
+          </small>
+
+          <small *ngIf="form.get('password').errors.minlength">
+            Длина должна быть не менее {{form.get('password').errors.minlength.requiredLength}} символов.
+          </small>
+          <small *ngIf="form.get('password').errors.pattern">
+            Пароль должен сосотять из заглавной буквы, прописной, цифры и символа.
+          </small>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box1">
+          <small>Соглашаюсь на все условия, не читая</small>
+        </div>
+        <div class="box2">
+          <input type="checkbox" ng-model="checkboxModel" formControlName="checkbox" class="box3">
+          <div
+                  *ngIf="form.get('checkbox').invalid && form.get('checkbox').touched"
+                  class="validation"
+          >
+            <small *ngIf="form.get('checkbox').errors.required">
+              Согласен с условиями
+            </small>
+          </div>
+        </div>
+      </div>
+      <button class="btn registration" type="submit" [disabled]="form.invalid || form.pending">Регистрация</button>
+    </form>
+  </div>
+</form>
