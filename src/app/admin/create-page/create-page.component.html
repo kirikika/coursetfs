@@ -1,26 +1,26 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <h1>Создание новой заметки</h1>
-    <p>Добавьте новую заметку или поделитесь идеей</p>
+    <h1>Создание нового поста</h1>
+    <p>Добавьте новый пост или поделитесь идеей</p>
 
     <div
             class="form-control"
             [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
     >
-        <label for="title">Название:</label>
+        <label for="title">Заголовок:</label>
         <input id="title" type="text" formControlName="title">
         <div
                 *ngIf="form.get('title').touched && form.get('title').invalid"
                 class="validation"
         >
             <small *ngIf="form.get('title').errors.required">
-                Введите название
+                Введите заголовок
             </small>
         </div>
     </div>
 
     <div class="form-control">
         <label>Содержимое:</label>
-        <input id="text" type="text" formControlName="text">
+        <quill-editor formControlName="text"></quill-editor>
     </div>
 
     <div
@@ -34,7 +34,7 @@
                 class="validation"
         >
             <small *ngIf="form.get('author').errors.required">
-                Кто автор?          </small>
+                введите имя автора          </small>
         </div>
     </div>
 

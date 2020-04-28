@@ -14,6 +14,7 @@ import { SearchPipe } from './shared/search.pipe';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AlertService } from './shared/services/alert.service';
 import { AppComponent } from './create-todo/app.component';
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   declarations: [
@@ -24,13 +25,14 @@ import { AppComponent } from './create-todo/app.component';
     EditPageComponent,
     SearchPipe,
       AlertComponent,
-      AppComponent
+      AppComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    QuillModule.forRoot(),
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
@@ -39,12 +41,13 @@ import { AppComponent } from './create-todo/app.component';
           {path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard]},
           {path: 'create', component: CreatePageComponent, canActivate: [AuthGuard]},
           {path: 'post/:id/edit', component: EditPageComponent, canActivate: [AuthGuard]},
-          {path: 'todo', component: AppComponent, canActivate: [AuthGuard]}
+          {path: 'todo', component: AppComponent, canActivate: [AuthGuard]},
           ]
       }
     ])
   ],
-  exports: [RouterModule],
+  exports: [RouterModule,
+    QuillModule],
   providers: [AuthGuard, AlertService]
 })
 export class AdminModule {

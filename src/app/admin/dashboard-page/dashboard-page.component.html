@@ -5,9 +5,9 @@
 <table>
     <thead>
         <tr>
-            <th>#</th>
+            <th>№</th>
             <th>Автор</th>
-            <th>Название</th>
+            <th>Заголовок</th>
             <th>Дата</th>
             <th>Редактировать</th>
         </tr>
@@ -19,10 +19,11 @@
         <td>{{post.title}}</td>
         <td>{{post.date}}</td>
         <td>
-            <button class="btn btn-link open"
-                    [routerlink]="['/admin', 'post', post.id, 'edit']"
+            <button
+                    class="btn btn-link open"
+                    [routerLink]="['/admin', 'post', post.id, 'edit']"
             >
-                Изменить
+                Открыть
             </button>
             <a (click)="remove(post.id)">Удалить</a>
         </td>

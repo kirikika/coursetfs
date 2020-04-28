@@ -1,5 +1,9 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Добро пожаловать в приложение</h2>
+  <h3>
+    логин: kirill@mail.ru
+    пароль: Kiri11!
+  </h3>
 
 
   <div class="alert alert-danger" *ngIf="auth.error$ | async as error">

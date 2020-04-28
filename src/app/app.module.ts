@@ -10,6 +10,7 @@ import {SharedModule} from './shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Provider } from '@angular/compiler/src/core';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { QuillModule } from 'ngx-quill';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -26,6 +27,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    QuillModule.forRoot(),
     SharedModule
   ],
   providers: [INTERCEPTOR_PROVIDER],
