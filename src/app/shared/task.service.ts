@@ -45,4 +45,9 @@ export class TaskService {
     remove(id: string): Observable<void>{
       return this.http.delete<void>(`${environment.fbDbUrl}/tasks/${id}.json`)
     }
+    completeTask(id: number): Observable<Task> {
+        return this.http.put<Task>(`${environment.fbDbUrl}/tasks/${id}.json`, {
+            completed: true
+        })
+    }
 }

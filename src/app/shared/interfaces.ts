@@ -20,6 +20,7 @@ export interface Task {
     id?: string
     titletask: string
     date: Date
+    completed: boolean
 }
 
 export interface FbCreateResponse {

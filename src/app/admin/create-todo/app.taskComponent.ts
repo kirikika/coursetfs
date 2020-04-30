@@ -27,12 +27,7 @@ export class TaskComponent implements OnInit, OnDestroy {
       this.tasks = tasks
     })
   }
-  remove(id: string) {
-    this.tasksService.remove(id).subscribe(() => {
-      this.tasks = this.tasks.filter(task => task.id !== id)
-      this.alert.danger('Вы удалили заметку')
-    })
-  }
+
   ngOnDestroy() {
     if (this.taskpSub) {
       this.taskpSub.unsubscribe()

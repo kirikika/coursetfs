@@ -23,7 +23,6 @@ export class AuthService {
   }
 
   login(user: User): Observable<any> {
-    // @ts-ignore
     user.returnSecureToken = true;
     return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user).pipe(
         tap(this.setToken),
@@ -33,6 +32,10 @@ export class AuthService {
 
   logout() {
     this.setToken(null)
+  }
+
+  register(user: User): Observable<User> {
+    return this.http.post<User>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,user)
   }
 
   isAuthenticated(): boolean {

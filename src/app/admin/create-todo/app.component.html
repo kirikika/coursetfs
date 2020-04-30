@@ -39,7 +39,8 @@
             <td>{{task.titletask}}</td>
             <td>{{task.date}}</td>
             <td>
-                <a (click)="remove(task.id)">Удалить</a>
+                <input type="checkbox">Выполнено
+                <button class="btn" (click)="remove(task.id)">Удалить</button>
             </td>
         </tr>
         </tbody>

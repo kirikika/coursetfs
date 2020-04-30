@@ -49,6 +49,11 @@ export class AppComponent implements OnInit, OnDestroy{
       this.tasks = tasks
     })
   }
+  completeTask(id: number) {
+    this.taskService.completeTask(id).subscribe(task => {
+      this.tasks.find(t => t.id === task.id).completed = true
+    })
+  }
 
   submit() {
     if (this.form.invalid) {
@@ -56,6 +61,7 @@ export class AppComponent implements OnInit, OnDestroy{
     }
 
     const task: Task = {
+      completed: false,
       titletask: this.form.value.titletask,
       date: new Date()
     }

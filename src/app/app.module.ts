@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Provider } from '@angular/compiler/src/core';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { QuillModule } from 'ngx-quill';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -22,9 +23,10 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AppComponent,
     MainLayoutComponent,
     HomePageComponent,
-    PostPageComponent,
+    PostPageComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     QuillModule.forRoot(),
